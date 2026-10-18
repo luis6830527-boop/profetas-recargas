@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050b18">
+  <title>PROFETAS RECARGAS | Diamantes al instante</title>
+  <style>
+    :root{--bg:#050a14;--panel:#0a1426;--blue:#08b9ff;--blue2:#0878ff;--white:#f4f8ff;--muted:#a9bad1;--line:#123b63;--gold:#ffe36a}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#092d58 0,transparent 35%),var(--bg);color:var(--white);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+    a{color:inherit;text-decoration:none}button,input,select{font:inherit}
+    .wrap{width:min(1120px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:5;background:#040916ed;border-bottom:1px solid #123453;backdrop-filter:blur(12px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:70px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:950;letter-spacing:.5px}.gem{color:var(--blue);font-size:32px;text-shadow:0 0 18px #00baff}.brand small{display:block;font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:700}
+    nav{display:flex;gap:22px;color:#d8e6f7;font-size:14px}nav a:hover{color:var(--blue)}
+    .cartbtn,.primary,.buy{border:0;background:linear-gradient(100deg,#0784ff,#00baff);color:white;font-weight:850;border-radius:10px;padding:12px 17px;cursor:pointer;box-shadow:0 0 20px #008cff26}.cartbtn span{background:#04152a;padding:2px 7px;border-radius:99px;margin-left:5px}
+    .hero{padding:56px 0 28px;display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
+    .eyebrow{display:inline-flex;border:1px solid #125b89;background:#08233d;color:#75d9ff;padding:7px 12px;border-radius:99px;font-size:12px;font-weight:850;letter-spacing:1px}
+    h1{font-size:clamp(42px,6vw,72px);line-height:.95;letter-spacing:-2px;margin:20px 0 14px;font-weight:1000}h1 em{font-style:normal;color:var(--blue);text-shadow:0 0 28px #008cff70}
+    .lead{color:#c2d2e7;font-size:18px;line-height:1.55;max-width:530px}.checks{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;color:#e4f3ff;font-size:13px}.checks b{color:var(--blue);margin-right:6px}
+    .hero-art{min-height:300px;border:1px solid #145081;border-radius:22px;background:radial-gradient(circle at 50% 42%,#075ba8 0, #09274c 30%,#07101f 70%);display:grid;place-items:center;position:relative;overflow:hidden}
+    .hero-art:before,.hero-art:after{content:"";position:absolute;width:230px;height:230px;border:1px solid #087fff45;transform:rotate(45deg);box-shadow:0 0 70px #008cff22}.hero-art:after{width:160px;height:160px}
+    .biggem{font-size:120px;color:#30d2ff;filter:drop-shadow(0 0 25px #008fff);z-index:1}.arttext{position:absolute;bottom:22px;text-align:center;font-size:13px;letter-spacing:3px;font-weight:900;color:#9ce8ff}
+    .sectionhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:30px 0 18px}.sectionhead h2{font-size:26px;margin:0}.sectionhead p{color:var(--muted);margin:6px 0 0;font-size:14px}
+    .formpanel{display:grid;grid-template-columns:1fr 1fr auto;gap:14px;background:#081326;border:1px solid var(--line);padding:18px;border-radius:16px;margin:18px 0 34px}
+    label{display:block;font-size:13px;color:#c6d8ed;font-weight:750;margin-bottom:8px}input,select{width:100%;background:#0b1d34;border:1px solid #234568;color:white;padding:13px;border-radius:9px;outline:none}input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #08b9ff1c}.formpanel .primary{align-self:end;white-space:nowrap}
+    .products{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:linear-gradient(155deg,#0d1a2e,#07101d);border:1px solid #173b61;border-radius:15px;padding:18px;text-align:center;position:relative;transition:.2s}.card:hover{transform:translateY(-3px);border-color:var(--blue);box-shadow:0 8px 30px #008cff14}
+    .diamond{height:94px;display:grid;place-items:center;font-size:58px;color:#19c5ff;filter:drop-shadow(0 0 13px #008cff80)}.amount{font-size:27px;font-weight:950}.amount small{font-size:13px;color:var(--blue);letter-spacing:1px}.price{font-size:27px;font-weight:950;color:var(--gold);margin:12px 0 15px}.buy{width:100%;padding:11px}.tag{position:absolute;top:10px;left:10px;background:var(--gold);color:#111;padding:4px 7px;border-radius:5px;font-size:10px;font-weight:950}
+    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px 0}.feature{border:1px solid #143656;border-radius:12px;background:#071326;padding:16px}.feature b{display:block;margin-bottom:6px}.feature span{font-size:13px;color:var(--muted)}
+    .how{border-top:1px solid #102943;margin-top:38px;padding:30px 0 40px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.step{padding:17px;background:#081426;border-radius:12px;border:1px solid #153554}.num{color:var(--blue);font-size:25px;font-weight:1000}.step p{color:var(--muted);font-size:14px;line-height:1.5}
+    footer{border-top:1px solid #102943;padding:22px 0;color:#91a8c3;font-size:12px}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    .notice{display:none;margin:14px 0;padding:12px 14px;border-radius:10px;background:#0b2b31;border:1px solid #167f8b;color:#b9f8ff;font-size:14px}.notice.show{display:block}
+    .modalback{position:fixed;inset:0;background:#000b;z-index:10;display:none;align-items:center;justify-content:center;padding:18px}.modalback.show{display:flex}.modal{width:min(470px,100%);background:#081426;border:1px solid #17618e;border-radius:17px;padding:23px;box-shadow:0 20px 80px #000}.modal h3{margin-top:0}.modal p{color:var(--muted);font-size:14px;line-height:1.5}.modal .primary{width:100%;margin-top:12px}.close{float:right;background:transparent;border:0;color:white;font-size:24px;cursor:pointer}
+    @media(max-width:760px){nav{display:none}.hero{grid-template-columns:1fr;padding-top:35px}.hero-art{min-height:220px}.formpanel{grid-template-columns:1fr}.formpanel .primary{width:100%}.products{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}.sectionhead{align-items:start;flex-direction:column}}
+    @media(max-width:420px){.products{grid-template-columns:1fr 1fr;gap:9px}.card{padding:12px}.diamond{height:72px;font-size:45px}.amount{font-size:22px}.price{font-size:23px}.brand{font-size:14px}.cartbtn{padding:10px 12px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#"><span class="gem">◆</span><span>PROFETAS RECARGAS<small>DIAMANTES AL INSTANTE</small></span></a>
+    <nav><a href="#inicio">Inicio</a><a href="#paquetes">Recargas</a><a href="#como">Cómo funciona</a><a href="#contacto">Contacto</a></nav>
+    <button class="cartbtn" id="cartOpen">🛒 Pedido <span id="cartCount">0</span></button>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero" id="inicio">
+    <div>
+      <span class="eyebrow">⚡ RECARGAS PARA ECUADOR</span>
+      <h1>DIAMANTES<br><em>AL INSTANTE</em></h1>
+      <p class="lead">Equipa tu juego con diamantes de Free Fire. Elige tu paquete y prepara tu pedido de forma rápida y sencilla.</p>
+      <div class="checks"><span><b>⚡</b> Proceso sencillo</span><span><b>◇</b> Precios claros</span><span><b>✓</b> Atención al cliente</span></div>
+    </div>
+    <div class="hero-art" aria-label="Ilustración decorativa de diamante"><div class="biggem">◆</div><div class="arttext">PROFETAS RECARGAS • ECUADOR</div></div>
+  </section>
+
+  <div class="sectionhead"><div><h2>Prepara tu recarga</h2><p>Ingresa tus datos antes de elegir el paquete.</p></div></div>
+  <section class="formpanel" aria-label="Datos del jugador">
+    <div><label for="playerId">ID de jugador de Free Fire</label><input id="playerId" inputmode="numeric" placeholder="Ej. 123456789" maxlength="20"></div>
+    <div><label for="server">Servidor / región</label><select id="server"><option value="">Selecciona tu región</option><option value="LATAM">Latinoamérica</option><option value="BR">Brasil</option><option value="US">Norteamérica</option><option value="OTRO">Otro / confirmar</option></select></div>
+    <button class="primary" id="savePlayer">Guardar datos</button>
+  </section>
+  <div class="notice" id="notice" role="status"></div>
+
+  <section id="paquetes">
+    <div class="sectionhead"><div><h2>💎 Paquetes de diamantes</h2><p>Selecciona el paquete que quieres pedir.</p></div><p>Precios en USD</p></div>
+    <div class="products" id="products"></div>
+  </section>
+
+  <section class="features">
+    <div class="feature"><b>⚡ Pedido sencillo</b><span>Prepara tu solicitud en pocos pasos.</span></div>
+    <div class="feature"><b>🔒 Compra responsable</b><span>No compartas contraseñas ni códigos de acceso.</span></div>
+    <div class="feature"><b>💎 Precios visibles</b><span>Consulta el precio antes de continuar.</span></div>
+    <div class="feature"><b>💬 Atención</b><span>Confirma disponibilidad antes de pagar.</span></div>
+  </section>
+
+  <section class="how" id="como">
+    <div class="sectionhead"><div><h2>¿Cómo funciona?</h2><p>Esta versión prepara el pedido; aún no realiza recargas ni cobra automáticamente.</p></div></div>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><b>Ingresa tu ID</b><p>Escribe el ID del jugador y selecciona la región correcta.</p></div>
+      <div class="step"><div class="num">02</div><b>Elige tus diamantes</b><p>Añade un paquete al pedido y revisa el total antes de enviarlo.</p></div>
+      <div class="step"><div class="num">03</div><b>Confirma con el vendedor</b><p>Verifica proveedor, disponibilidad y método de pago antes de pagar.</p></div>
+    </div>
+  </section>
+</main>
+<footer id="contacto"><div class="wrap foot"><span><b>◆ PROFETAS RECARGAS</b> · Diamantes al instante</span><span>Proyecto en construcción · Ecuador</span><span>© 2026 Profetas Recargas</span></div></footer>
+
+<div class="modalback" id="modalBack" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <button class="close" id="modalClose" aria-label="Cerrar">×</button>
+    <h3 id="modalTitle">Tu pedido</h3>
+    <div id="cartDetails"></div>
+    <p id="cartPlayer"></p>
+    <p>Esta web todavía no recibe pagos ni entrega diamantes automáticamente. Confirma el costo y la disponibilidad antes de pagar.</p>
+    <button class="primary" id="copyOrder">Copiar resumen del pedido</button>
+  </div>
+</div>
+<script>
+const packs = [
+  {amount:"100", price:0.80},
+  {amount:"310", price:2.50},
+  {amount:"520", price:4.00},
+  {amount:"1.060", price:8.00},
+  {amount:"2.180", price:15.00, tag:"PRECIO ESPECIAL"},
+  {amount:"5.600", price:37.25, tag:"MÁS DIAMANTES"}
+];
+let cart = [];
+const products = document.getElementById("products");
+const money = n => "$" + n.toFixed(2);
+function renderProducts(){
+  products.innerHTML = packs.map((p,i)=>`
+    <article class="card">${p.tag?`<span class="tag">${p.tag}</span>`:""}
+      <div class="diamond">◆</div><div class="amount">${p.amount}<br><small>DIAMANTES</small></div>
+      <div class="price">${money(p.price)}</div>
+      <button class="buy" data-add="${i}">Añadir al pedido</button>
+    </article>`).join("");
+}
+function updateCount(){document.getElementById("cartCount").textContent=cart.length}
+function showNotice(msg){const n=document.getElementById("notice");n.textContent=msg;n.classList.add("show");setTimeout(()=>n.classList.remove("show"),4000)}
+document.getElementById("savePlayer").addEventListener("click",()=>{
+  const id=document.getElementById("playerId").value.trim(), server=document.getElementById("server").value;
+  if(!/^\d{5,20}$/.test(id)){showNotice("Ingresa un ID numérico válido (de 5 a 20 dígitos).");return}
+  if(!server){showNotice("Selecciona tu región o servidor.");return}
+  showNotice("Datos guardados en esta página para preparar tu pedido.");
+});
+products.addEventListener("click",e=>{
+  const b=e.target.closest("[data-add]"); if(!b)return;
+  const id=document.getElementById("playerId").value.trim(), server=document.getElementById("server").value;
+  if(!/^\d{5,20}$/.test(id)||!server){showNotice("Primero ingresa un ID válido y selecciona la región.");document.getElementById("playerId").focus();return}
+  const p=packs[Number(b.dataset.add)];cart.push({...p,id,server});updateCount();showNotice(`Añadiste ${p.amount} diamantes al pedido.`);
+});
+function openCart(){
+ const back=document.getElementById("modalBack"), details=document.getElementById("cartDetails");
+ if(!cart.length){details.innerHTML="<p>Tu pedido está vacío. Añade un paquete para empezar.</p>";document.getElementById("cartPlayer").textContent="";document.getElementById("copyOrder").disabled=true}
+ else {
+  const total=cart.reduce((s,p)=>s+p.price,0);
+  details.innerHTML=cart.map((p,i)=>`<div style="display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #173653"><span>${p.amount} diamantes · ${p.server}</span><b>${money(p.price)}</b></div>`).join("")+`<h3 style="text-align:right">Total: ${money(total)}</h3>`;
+  const first=cart[0];document.getElementById("cartPlayer").textContent=`ID de jugador: ${first.id} · Región: ${first.server}`;
+  document.getElementById("copyOrder").disabled=false;
+ }
+ back.classList.add("show");
+}
+document.getElementById("cartOpen").addEventListener("click",openCart);
+document.getElementById("modalClose").addEventListener("click",()=>document.getElementById("modalBack").classList.remove("show"));
+document.getElementById("modalBack").addEventListener("click",e=>{if(e.target.id==="modalBack")e.currentTarget.classList.remove("show")});
+document.getElementById("copyOrder").addEventListener("click",async()=>{
+ if(!cart.length)return;
+ const first=cart[0],total=cart.reduce((s,p)=>s+p.price,0);
+ const textOrder="PEDIDO - PROFETAS RECARGAS\nID: "+first.id+"\nRegión: "+first.server+"\n"+cart.map(p=>p.amount+" diamantes - "+money(p.price)).join("\n")+"\nTOTAL: "+money(total)+"\nPendiente de confirmar disponibilidad y pago.";
+ try{await navigator.clipboard.writeText(textOrder);showNotice("Resumen copiado. Puedes pegarlo en tu chat de atención.");}
+ catch(e){showNotice("No se pudo copiar automáticamente; revisa el pedido y toma nota de los datos.");}
+});
+renderProducts();
+</script>
+</body>
+</html>
