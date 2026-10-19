@@ -164,6 +164,22 @@ document.getElementById("sendWhatsApp").addEventListener("click",()=>{
  if(!cart.length){showNotice("Añade un paquete antes de enviar el pedido.");return;}
  const first=cart[0],total=cart.reduce((s,p)=>s+p.price,0);
  const order="Hola, quiero hacer un pedido en PROFETAS RECARGAS.%0A";
+  function renderProducts(){
+  products.innerHTML = packs.map((p,i)=>`
+    <article class="card ${p.popular?"popular":""}">
+      <div class="diamond"><img src="${p.image}" alt="Diamantes y cofre de recarga ${p.amount}" loading="lazy"></div><div class="amount">${p.amount}<br><small>DIAMANTES</small></div>
+      <div class="price">${money(p.price)}</div>
+      <button class="buy" data-add="${i}">Comprar</button>
+    </article>`).join("");
+}
+
+function updateCount(){document.getElementById("cartCount").textContent=cart.length}
+
+function showNotice(msg){const n=document.getElementById("notice");n.textContent=msg;n.classList.add("show");setTimeout(()=>n.classList.remove("show"),4000)}
+
+// AQUÍ VA TODO EL BLOQUE DE BÚSQUEDA DEL JUGADOR
+
+document.getElementById("savePlayer").addEventListener("click",()=>{
  const message="Hola, quiero hacer un pedido en PROFETAS RECARGAS.\\n\\nID de jugador: "+first.id+"\\nRegión: "+first.server+"\\n\\n"+cart.map(p=>p.amount+" diamantes - "+money(p.price)).join("\\n")+"\\n\\nTOTAL: "+money(total)+"\\n\\nPor favor, confírmame disponibilidad y método de pago.";
  window.open("https://wa.me/593959701943?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
 });
