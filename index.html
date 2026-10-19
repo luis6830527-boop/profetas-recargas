@@ -120,7 +120,7 @@ function renderProducts(){
       <div class="diamond"><img src="${p.image}" alt="Diamantes y cofre de recarga ${p.amount}" loading="lazy"></div><div class="amount">${p.amount}<br><small>DIAMANTES</small></div>
       <div class="price">${money(p.price)}</div>
       
-async function buscarNombreJugador() {
+(async function buscarNombreJugador) {
   const id = document.getElementById("playerId").value.trim();
   const nombre = document.getElementById("playerName");
 
