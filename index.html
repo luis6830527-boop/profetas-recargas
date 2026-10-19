@@ -121,43 +121,6 @@ function renderProducts(){
       <div class="price">${money(p.price)}</div>
       
 async function buscarNombreJugador() {
-  const id = document.getElementById("playerId").value.trim();
-  const nombre = document.getElementById("playerName");
-
-  if (!/^\d{5,20}$/.test(id)) {
-    nombre.textContent = "Escribe un ID válido.";
-    return;
-  }
-
-  nombre.textContent = "Buscando jugador...";
-
-  try {
-    const respuesta = await fetch(
-      "https://api2.nftoken.info/player-info?uid=" +
-      encodeURIComponent(id)
-    );
-
-    if (!respuesta.ok) throw new Error("No encontrado");
-
-    const datos = await respuesta.json();
-    const jugador = datos.AccountInfo || datos.basicInfo ||
-                    datos.data?.AccountInfo || datos;
-
-    const nick = jugador.AccountName || jugador.nickname ||
-                 jugador.nickName || jugador.name;
-
-    if (!nick) throw new Error("Sin nombre");
-
-    nombre.textContent = "Jugador: " + nick;
-  } catch (error) {
-    nombre.textContent =
-      "No se pudo consultar. Verifica el ID e inténtalo otra vez.";
-  }
-}
-
-document.getElementById("playerId").addEventListener(
-  "change", buscarNombreJugador
-);
 
       <button class="buy" data-add="${i}">Comprar</button>
     </article>`).join("");
