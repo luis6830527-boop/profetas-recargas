@@ -58,6 +58,11 @@
   <div class="sectionhead"><div><h2>Prepara tu recarga</h2><p>Ingresa tus datos antes de elegir el paquete.</p></div></div>
   <section class="formpanel" aria-label="Datos del jugador">
     <div><label for="playerId">ID de jugador de Free Fire</label><input id="playerId" inputmode="numeric" placeholder="Ej. 123456789" maxlength="20"></div>
+    
+<div style="grid-column:1/-1">
+  <label>Nombre del jugador</label>
+  <p id="playerName" style="color:#ffc84e;margin:6px 0">Escribe tu ID para consultar tu nombre.</p>
+</div>
     <div><label for="server">Servidor / región</label><select id="server"><option value="">Selecciona tu región</option><option value="LATAM">Latinoamérica</option><option value="BR">Brasil</option><option value="US">Norteamérica</option><option value="OTRO">Otro / confirmar</option></select></div>
     <button class="primary" id="savePlayer">Guardar datos</button>
   </section>
@@ -114,6 +119,46 @@ function renderProducts(){
     <article class="card ${p.popular?"popular":""}">
       <div class="diamond"><img src="${p.image}" alt="Diamantes y cofre de recarga ${p.amount}" loading="lazy"></div><div class="amount">${p.amount}<br><small>DIAMANTES</small></div>
       <div class="price">${money(p.price)}</div>
+      
+async function buscarNombreJugador() {
+  const id = document.getElementById("playerId").value.trim();
+  const nombre = document.getElementById("playerName");
+
+  if (!/^\d{5,20}$/.test(id)) {
+    nombre.textContent = "Escribe un ID válido.";
+    return;
+  }
+
+  nombre.textContent = "Buscando jugador...";
+
+  try {
+    const respuesta = await fetch(
+      "https://api2.nftoken.info/player-info?uid=" +
+      encodeURIComponent(id)
+    );
+
+    if (!respuesta.ok) throw new Error("No encontrado");
+
+    const datos = await respuesta.json();
+    const jugador = datos.AccountInfo || datos.basicInfo ||
+                    datos.data?.AccountInfo || datos;
+
+    const nick = jugador.AccountName || jugador.nickname ||
+                 jugador.nickName || jugador.name;
+
+    if (!nick) throw new Error("Sin nombre");
+
+    nombre.textContent = "Jugador: " + nick;
+  } catch (error) {
+    nombre.textContent =
+      "No se pudo consultar. Verifica el ID e inténtalo otra vez.";
+  }
+}
+
+document.getElementById("playerId").addEventListener(
+  "change", buscarNombreJugador
+);
+
       <button class="buy" data-add="${i}">Comprar</button>
     </article>`).join("");
 }
